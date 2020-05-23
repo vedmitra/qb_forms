@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { hot } from "react-hot-loader";
+import "./App.css";
+import FormWizard from "./common/FormWizard/FormWizard";
+import { CLAIM_SUBMISSION_STEPS } from "../constants/claims.constants";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1> Hello, QBE1 </h1>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="conainer">
+      <FormWizard wizardSteps={CLAIM_SUBMISSION_STEPS}></FormWizard>
+    </div>
+  );
 }
 
 export default hot(module)(App);
