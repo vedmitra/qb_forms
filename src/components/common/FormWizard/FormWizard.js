@@ -16,48 +16,26 @@ import { isFormValid } from "../../../utils/utility";
   1: {
     title: "Basic Info",
     component: "UserForm",
+    data:"user"
   },
   2: {
     title: "Claim Details",
     component: "ClaimForm",
+    data:"claimDetails"
   },
   3: {
     title: "Confirmation",
     component: "SubmissionForm",
   },
 }
-When any new step is added to the wizard in future, below steps need to be followed
-1. In componentMap variable, add the form name (Component name) and the corresponding data model name
-  Eg: UserForm:"userForm"
-2. set the initial state of new form. To do this, update useState hook with new form related model
-key in below example should correspond to model name in step 1
-Eg: useState({
-    userForm: new User(),
-    claimForm: new Claim(),
-    newForm: new newData()
-  })
-3. Update getPartialState method to return new form component state
-Eg: case "NewForm":
-        return { ...formState["newForm"] }; // key in formState should correspond to model name in step 1
  */
 function FormWizard(props) {
-  // Map component name to the data model name.
-  //When adding new steps to the form, add the new component name and the corresponding model name
-  const componentDataMap = {
-    UserForm: "userForm",
-    ClaimForm: "claimForm",
-  };
-
   // Component state variables
   const [currentStep, setCurrentStep] = useState(1);
-  const [activeFormName, setActiveFormName] = useState(
-    props.wizardSteps[1].component
-  );
+  const [activeForm, setActiveForm] = useState(props.wizardSteps[1]);
   const [highlightForm, setHighlightForm] = useState(false);
-  const [formState, setFormState] = useState({
-    userForm: new User(),
-    claimForm: new Claim(),
-  });
+  const [formState, setFormState] = useState(props.initialState);
+  const [updateChildState, setUpdateChildState] = useState(false);
   // Form wizard ref used in validating the form.
   let formWizardRef = useRef();
   const totalSteps = Object.keys(props.wizardSteps).length;
@@ -68,7 +46,7 @@ function FormWizard(props) {
     if (formValid) {
       let tempStep = currentStep;
       setCurrentStep(currentStep + 1);
-      setActiveFormName(props.wizardSteps[tempStep + 1].component);
+      setActiveForm(props.wizardSteps[tempStep + 1]);
     } else {
       setHighlightForm(true);
     }
@@ -78,7 +56,7 @@ function FormWizard(props) {
     let tempStep = currentStep;
     setHighlightForm(false);
     setCurrentStep(currentStep - 1);
-    setActiveFormName(props.wizardSteps[tempStep - 1].component);
+    setActiveForm(props.wizardSteps[tempStep - 1]);
   };
 
   const handleChildFormChange = (childProps, changeEvent) => {
@@ -88,21 +66,9 @@ function FormWizard(props) {
   const setPartialState = (childProps, changeEvent) => {
     let tempState = Object.assign({}, formState);
     let fieldName = changeEvent.target.name;
-    tempState[componentDataMap[activeFormName]] = Object.assign({}, childProps);
-    tempState[componentDataMap[activeFormName]][fieldName] =
-      changeEvent.target.value;
+    tempState[activeForm.data] = Object.assign({}, childProps);
+    tempState[activeForm.data][fieldName] = changeEvent.target.value;
     return tempState;
-  };
-  // For getting active child component state
-  const getPartialState = (activeComponent) => {
-    switch (activeComponent) {
-      case "UserForm":
-        return { ...formState["userForm"] };
-      case "ClaimForm":
-        return { ...formState["claimForm"] };
-      default:
-        return {};
-    }
   };
 
   const submitClaimForm = (e) => {
@@ -135,10 +101,16 @@ function FormWizard(props) {
               onSubmit={(e) => submitClaimForm(e)}
             >
               <DynamicComponent
-                componentName={activeFormName}
-                componentData={getPartialState(activeFormName)}
+                componentName={activeForm.component}
+                componentData={{
+                  ...formState[activeForm.data],
+                }}
                 handleChange={(childProps, changeEvent) =>
                   handleChildFormChange(childProps, changeEvent)
+                }
+                updateState={updateChildState}
+                liftState={(newState) =>
+                  setFormState({ ...formState, [activeForm.data]: newState })
                 }
                 highlightForm={highlightForm}
               />
@@ -176,6 +148,7 @@ function FormWizard(props) {
 
 FormWizard.prototype = {
   wizardSteps: PropTypes.object.isRequired,
+  initialState: PropTypes.object.isRequired,
 };
 
 export default FormWizard;

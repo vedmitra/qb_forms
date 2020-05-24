@@ -4,10 +4,12 @@ export const CLAIM_SUBMISSION_STEPS = {
   1: {
     title: "Basic Info",
     component: "UserForm",
+    data: "user",
   },
   2: {
     title: "Claim Details",
     component: "ClaimForm",
+    data: "claimDetails",
   },
   3: {
     title: "Confirmation",

@@ -1,71 +1,88 @@
-import React, { useRef } from "react";
+import React, { createRef, Component } from "react";
 import { setHighlightClass } from "../../utils/utility";
 
-function UserForm(props) {
-  const { firstName, lastName, email } = props.componentData;
-  const fieldRefs = {
-    firstNameRef: useRef(null),
-    lastNameRef: useRef(null),
-    emailRef: useRef(null),
+/**
+ * Component to fill in user details
+ */
+class UserForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = props.componentData || {
+      firstName: "",
+      lastName: "",
+      email: "",
+    };
+  }
+  fieldRefs = {
+    firstNameRef: createRef(null),
+    lastNameRef: createRef(null),
+    emailRef: createRef(null),
   };
-  const handleChange = (e, fieldName) => {
-    setHighlightClass(fieldName, { highlightForm: true }, fieldRefs);
-    props.handleChange(props.componentData, e);
-  };
-  return (
-    <>
-      <div className="form-group">
-        <label htmlFor="firstName">First Name</label>
-        <input
-          name="firstName"
-          className={`form-control ${setHighlightClass(
-            "firstName",
-            props,
-            fieldRefs
-          )}`}
-          type="text"
-          ref={fieldRefs.firstNameRef}
-          required
-          maxLength={20}
-          onChange={(e) => handleChange(e, "firstName")}
-          value={firstName}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          name="lastName"
-          className={`form-control ${setHighlightClass(
-            "lastName",
-            props,
-            fieldRefs
-          )}`}
-          type="text"
-          ref={fieldRefs.lastNameRef}
-          required
-          value={lastName}
-          maxLength={20}
-          onChange={(e) => handleChange(e, "lastName")}
-        />
-      </div>
-      <div className="form-group">
-        <label htmlFor="email">Email Address</label>
-        <input
-          name="email"
-          className={`form-control ${setHighlightClass(
-            "email",
-            props,
-            fieldRefs
-          )}`}
-          type="email"
-          ref={fieldRefs.emailRef}
-          required
-          value={email}
-          onChange={(e) => handleChange(e, "email")}
-        />
-      </div>
-    </>
-  );
+  handleChange(e, fieldName) {
+    setHighlightClass(fieldName, { highlightForm: true }, this.fieldRefs);
+    this.setState({
+      [fieldName]: e.target.value,
+    });
+    if (this.props.liftState) {
+      this.props.liftState(this.state);
+    }
+  }
+  render() {
+    return (
+      <>
+        <div className="form-group">
+          <label htmlFor="firstName">First Name</label>
+          <input
+            name="firstName"
+            className={`form-control ${setHighlightClass(
+              "firstName",
+              this.props,
+              this.fieldRefs
+            )}`}
+            type="text"
+            ref={this.fieldRefs.firstNameRef}
+            required
+            maxLength={20}
+            onChange={(e) => this.handleChange(e, "firstName")}
+            value={this.state.firstName}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="lastName">Last Name</label>
+          <input
+            name="lastName"
+            className={`form-control ${setHighlightClass(
+              "lastName",
+              this.props,
+              this.fieldRefs
+            )}`}
+            type="text"
+            ref={this.fieldRefs.lastNameRef}
+            required
+            value={this.state.lastName}
+            maxLength={20}
+            onChange={(e) => this.handleChange(e, "lastName")}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email Address</label>
+          <input
+            name="email"
+            className={`form-control ${setHighlightClass(
+              "email",
+              this.props,
+              this.fieldRefs
+            )}`}
+            type="email"
+            ref={this.fieldRefs.emailRef}
+            required
+            value={this.state.email}
+            onChange={(e) => this.handleChange(e, "email")}
+          />
+        </div>
+      </>
+    );
+  }
 }
 
 export default UserForm;

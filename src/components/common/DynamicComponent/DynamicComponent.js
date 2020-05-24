@@ -12,6 +12,8 @@ function DynamicComponent(props) {
     componentData: props.componentData,
     handleChange: props.handleChange,
     highlightForm: props.highlightForm,
+    updateState: props.updateState,
+    liftState: props.liftState,
   });
 }
 
@@ -20,6 +22,8 @@ DynamicComponent.prototype = {
   componentData: PropTypes.object.isRequired,
   handleChange: PropTypes.func.isRequired,
   highlightForm: PropTypes.bool.isRequired,
+  updateState: PropTypes.bool.isRequired,
+  liftState: PropTypes.func.isRequired,
 };
 
 export default DynamicComponent;
