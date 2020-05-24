@@ -1,1 +1,84 @@
-{"users":[{"id":"1","firstName":"Veda","lastName":"Mitra","email":"myemail@mycompany.com"}],"claimSubmissions":[{"id":1,"user":{"id":"1","firstName":"Veda","lastName":"Mitra","email":"myemail@mycompany.com"},"claim":{"id":1,"policyNumber":"0001","eventDate":"","description":"Covid19 Pandemic"}},{"id":2,"user":{"id":"1","firstName":"Veda","lastName":"Mitra","email":"myemail@mycompany.com"},"claim":{"id":1,"policyNumber":"0001","eventDate":"","description":"Covid19 Pandemic"}},{"user":{"id":"2","firstName":"Test","lastName":"User1","email":"myemail2@mycompany.com"},"claim":{"id":1,"policyNumber":"0002","eventDate":"","description":"Covid19 Pandemic"}}]}
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Veda",
+      "lastName": "Mitra",
+      "email": "myemail@mycompany.com"
+    }
+  ],
+  "claims": [
+    {
+      "id": 1,
+      "user": {
+        "id": "1",
+        "firstName": "Veda",
+        "lastName": "Mitra",
+        "email": "myemail@mycompany.com"
+      },
+      "claim": {
+        "id": 1,
+        "policyNumber": "0001",
+        "eventDate": "",
+        "description": "Covid19 Pandemic"
+      }
+    },
+    {
+      "id": 2,
+      "user": {
+        "id": "1",
+        "firstName": "Veda",
+        "lastName": "Mitra",
+        "email": "myemail@mycompany.com"
+      },
+      "claim": {
+        "id": 1,
+        "policyNumber": "0001",
+        "eventDate": "",
+        "description": "Covid19 Pandemic"
+      }
+    },
+    {
+      "user": {
+        "id": "2",
+        "firstName": "Test",
+        "lastName": "User1",
+        "email": "myemail2@mycompany.com"
+      },
+      "claim": {
+        "id": 1,
+        "policyNumber": "0002",
+        "eventDate": "",
+        "description": "Covid19 Pandemic"
+      }
+    },
+    {
+      "user": {
+        "firstName": "dvds",
+        "lastName": "dvd",
+        "email": "dv@gmail.com"
+      },
+      "claimDetails": {
+        "policyNumber": "13",
+        "eventDate": "2020-05-07",
+        "description": "dvd"
+      },
+      "createdAt": 1590311025253,
+      "id": 3
+    },
+    {
+      "user": {
+        "firstName": "dvds",
+        "lastName": "dvd",
+        "email": "dv@gmail.com"
+      },
+      "claimDetails": {
+        "policyNumber": "13",
+        "eventDate": "2020-05-07",
+        "description": "dvd"
+      },
+      "createdAt": 1590311082874,
+      "id": 4
+    }
+  ]
+}

@@ -7,7 +7,7 @@ const users = [
   },
 ];
 
-const claimSubmissions = [
+const claims = [
   {
     id: 1,
     user: {
@@ -57,5 +57,5 @@ const claimSubmissions = [
 // Using CommonJS style export so we can consume via Node (without using Babel-node)
 module.exports = {
   users,
-  claimSubmissions,
+  claims,
 };

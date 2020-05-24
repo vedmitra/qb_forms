@@ -75,7 +75,7 @@ function FormWizard(props) {
     e.preventDefault();
     let formValid = isFormValid(formWizardRef);
     if (formValid) {
-      alert("Form Submitted");
+      props.submmitForm(formState);
     } else {
       setHighlightForm(true);
     }
@@ -149,6 +149,8 @@ function FormWizard(props) {
 FormWizard.prototype = {
   wizardSteps: PropTypes.object.isRequired,
   initialState: PropTypes.object.isRequired,
+  submmitForm: PropTypes.func.isRequired,
+  submitStatus: PropTypes.object.isRequired,
 };
 
 export default FormWizard;

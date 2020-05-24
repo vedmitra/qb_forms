@@ -31,8 +31,8 @@ server.use((req, res, next) => {
   next();
 });
 
-server.post("/claim/", function (req, res, next) {
-  req.body.slug = createSlug(req.body.title); // Generate a slug for new courses.
+server.post("/claims/", function (req, res, next) {
+  //req.body.slug = createSlug(req.body.title);
   next();
 });
 
@@ -49,8 +49,12 @@ server.listen(port, () => {
 
 // Returns a URL friendly slug
 function createSlug(value) {
-  return value
-    .replace(/[^a-z0-9_]+/gi, "-")
-    .replace(/^-|-$/g, "")
-    .toLowerCase();
+  console.log(value);
+  return (
+    value &&
+    value
+      .replace(/[^a-z0-9_]+/gi, "-")
+      .replace(/^-|-$/g, "")
+      .toLowerCase()
+  );
 }
