@@ -5,13 +5,18 @@ import User from "../../models/User";
 import Claim from "../../models/Claim";
 import { saveClaim } from "../../api/claimSubmitAPI";
 
+/**
+ * Specific component to handle covid releated claims.
+ */
 function CovidClaims() {
+  // Below state is needed to pas in to the child components for them to update accordingly.
   const [submitStatus, setSubmitStatus] = useState({
     inProgress: false,
     success: false,
     error: false,
     message: "",
   });
+  // API call to submit the data and pass appropriate state to hild compoennts
   const submitForm = (claim) => {
     setSubmitStatus({
       inProgress: true,

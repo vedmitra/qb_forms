@@ -1,8 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import DynamicComponent from "../DynamicComponent/DynamicComponent";
-import User from "../../../models/User";
-import Claim from "../../../models/Claim";
 import { isFormValid } from "../../../utils/utility";
 
 /**
@@ -76,11 +74,15 @@ function FormWizard(props) {
     let formValid = isFormValid(formWizardRef);
     if (formValid) {
       props.submmitForm(formState);
+      let tempStep = currentStep;
+      setCurrentStep(currentStep + 1);
+      setActiveForm(props.wizardSteps[tempStep + 1]);
     } else {
       setHighlightForm(true);
     }
   };
 
+  useEffect(() => {}, [props.submitStatus]);
   return (
     <div className="d-flex p2 justify-content-center">
       <div style={{ width: "80%" }}>
@@ -89,7 +91,7 @@ function FormWizard(props) {
             <h5 className="card-title text-center">
               <span
                 className="rounded-circle border border-primary"
-                style={{ padding: "0 10px", marginRight: "10px" }}
+                style={{ padding: "0 8px", marginRight: "8px" }}
               >
                 {currentStep}
               </span>
@@ -101,18 +103,19 @@ function FormWizard(props) {
               onSubmit={(e) => submitClaimForm(e)}
             >
               <DynamicComponent
-                componentName={activeForm.component}
-                componentData={{
-                  ...formState[activeForm.data],
+                dynamicProps={{
+                  componentName: activeForm.component,
+                  componentData: {
+                    ...formState[activeForm.data],
+                  },
+                  handleChange: (childProps, changeEvent) =>
+                    handleChildFormChange(childProps, changeEvent),
+                  updateState: updateChildState,
+                  liftState: (newState) =>
+                    setFormState({ ...formState, [activeForm.data]: newState }),
+                  highlightForm: highlightForm,
+                  submitStatus: props.submitStatus,
                 }}
-                handleChange={(childProps, changeEvent) =>
-                  handleChildFormChange(childProps, changeEvent)
-                }
-                updateState={updateChildState}
-                liftState={(newState) =>
-                  setFormState({ ...formState, [activeForm.data]: newState })
-                }
-                highlightForm={highlightForm}
               />
             </form>
             {currentStep > 1 && (

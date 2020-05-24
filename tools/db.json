@@ -79,6 +79,160 @@
       },
       "createdAt": 1590311082874,
       "id": 4
+    },
+    {
+      "user": {
+        "firstName": "dsfds",
+        "lastName": "dsfdsf",
+        "email": "dsfdsf@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "23414",
+        "eventDate": "2020-05-06",
+        "description": "dsfd"
+      },
+      "createdAt": 1590311503571,
+      "id": 5
+    },
+    {
+      "user": {
+        "firstName": "sadf",
+        "lastName": "saf",
+        "email": "asdfdsa@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "1234",
+        "eventDate": "2020-05-13",
+        "description": "dsds"
+      },
+      "createdAt": 1590311774479,
+      "id": 6
+    },
+    {
+      "user": {
+        "firstName": "dsf",
+        "lastName": "dsf",
+        "email": "sdf@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "213",
+        "eventDate": "2020-05-01",
+        "description": "dfgsdgs"
+      },
+      "createdAt": 1590311932889,
+      "id": 7
+    },
+    {
+      "user": {
+        "firstName": "sdsf",
+        "lastName": "dsfa",
+        "email": "sdfa@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "3242",
+        "eventDate": "2020-05-06",
+        "description": "dsfds"
+      },
+      "createdAt": 1590311991615,
+      "id": 8
+    },
+    {
+      "user": {
+        "firstName": "dsfdsf",
+        "lastName": "sdf",
+        "email": "dsfsda@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "2121",
+        "eventDate": "2020-05-13",
+        "description": "dsfds"
+      },
+      "createdAt": 1590312045370,
+      "id": 9
+    },
+    {
+      "user": {
+        "firstName": "sdfsd",
+        "lastName": "sdf",
+        "email": "sdfsd@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "21312",
+        "eventDate": "2020-05-13",
+        "description": "dsfafd"
+      },
+      "createdAt": 1590312095771,
+      "id": 10
+    },
+    {
+      "user": {
+        "firstName": "faesf",
+        "lastName": "sfa",
+        "email": "sd@gmail.cop"
+      },
+      "claimDetails": {
+        "policyNumber": "2341",
+        "eventDate": "2020-05-07",
+        "description": "affdsfd"
+      },
+      "createdAt": 1590312174357,
+      "id": 11
+    },
+    {
+      "user": {
+        "firstName": "faesf",
+        "lastName": "sfa",
+        "email": "sd@gmail.cop"
+      },
+      "claimDetails": {
+        "policyNumber": "2341",
+        "eventDate": "2020-05-07",
+        "description": "affdsfd"
+      },
+      "createdAt": 1590312206539,
+      "id": 12
+    },
+    {
+      "user": {
+        "firstName": "faesf",
+        "lastName": "sfa",
+        "email": "sd@gmail.cop"
+      },
+      "claimDetails": {
+        "policyNumber": "2341",
+        "eventDate": "2020-05-07",
+        "description": "affdsfd"
+      },
+      "createdAt": 1590312219288,
+      "id": 13
+    },
+    {
+      "user": {
+        "firstName": "dsfds",
+        "lastName": "dsfsd",
+        "email": "dsfds@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "214",
+        "eventDate": "2020-05-09",
+        "description": "sdfdsfs"
+      },
+      "createdAt": 1590312435251,
+      "id": 14
+    },
+    {
+      "user": {
+        "firstName": "dsf",
+        "lastName": "df",
+        "email": "dsf@gmail.co"
+      },
+      "claimDetails": {
+        "policyNumber": "33",
+        "eventDate": "2020-05-15",
+        "description": "sdvd"
+      },
+      "createdAt": 1590312504487,
+      "id": 15
     }
   ]
 }

@@ -2,28 +2,26 @@ import { createElement } from "react";
 import PropTypes from "prop-types";
 import UserForm from "../../claimForms/UserForm";
 import ClaimForm from "../../claimForms/ClaimForm";
+import SubmitFeedback from "../../claimForms/SubmitFeedback";
 
 const components = {
   UserForm,
   ClaimForm,
+  SubmitFeedback,
 };
 function DynamicComponent(props) {
-  return createElement(components[props.componentName], {
-    componentData: props.componentData,
-    handleChange: props.handleChange,
-    highlightForm: props.highlightForm,
-    updateState: props.updateState,
-    liftState: props.liftState,
+  return createElement(components[props.dynamicProps.componentName], {
+    componentData: props.dynamicProps.componentData,
+    handleChange: props.dynamicProps.handleChange,
+    highlightForm: props.dynamicProps.highlightForm,
+    updateState: props.dynamicProps.updateState,
+    liftState: props.dynamicProps.liftState,
+    submitStatus: props.dynamicProps.submitStatus,
   });
 }
 
 DynamicComponent.prototype = {
-  componentName: PropTypes.string.isRequired,
-  componentData: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  highlightForm: PropTypes.bool.isRequired,
-  updateState: PropTypes.bool.isRequired,
-  liftState: PropTypes.func.isRequired,
+  dynamicProps: PropTypes.object.isRequired,
 };
 
 export default DynamicComponent;

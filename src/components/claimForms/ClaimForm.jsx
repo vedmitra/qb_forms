@@ -5,12 +5,14 @@ import { setHighlightClass } from "../../utils/utility";
 class ClaimForm extends Component {
   constructor(props) {
     super(props);
+    // If default data is not passed in from parent, initializing the state with defaults
     this.state = props.componentData || {
       policyNumber: "",
       eventDate: "",
       description: "",
     };
   }
+  // Refs are needed to validate form
   fieldRefs = {
     policyNumberRef: createRef(null),
     eventDateRef: createRef(null),

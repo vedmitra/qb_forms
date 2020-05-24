@@ -13,6 +13,6 @@ export const CLAIM_SUBMISSION_STEPS = {
   },
   3: {
     title: "Confirmation",
-    component: "SubmissionFeedback",
+    component: "SubmitFeedback",
   },
 };

@@ -2,17 +2,19 @@ import React, { createRef, Component } from "react";
 import { setHighlightClass } from "../../utils/utility";
 
 /**
- * Component to fill in user details
+ * Reusable Component to fill in user details
  */
 class UserForm extends Component {
   constructor(props) {
     super(props);
+    // If default data is not passed in from parent, initializing the state with defaults
     this.state = props.componentData || {
       firstName: "",
       lastName: "",
       email: "",
     };
   }
+  // Refs are needed to validate form
   fieldRefs = {
     firstNameRef: createRef(null),
     lastNameRef: createRef(null),
