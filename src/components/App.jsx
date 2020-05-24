@@ -5,17 +5,12 @@ import FormWizard from "./common/FormWizard/FormWizard";
 import { CLAIM_SUBMISSION_STEPS } from "../constants/claims.constants";
 import User from "../models/User";
 import Claim from "../models/Claim";
+import CovidClaims from "./covid/CovidClaims";
 
 function App() {
   return (
     <div className="conainer">
-      <FormWizard
-        wizardSteps={CLAIM_SUBMISSION_STEPS}
-        initialState={{
-          user: new User(),
-          claimDetails: new Claim(),
-        }}
-      ></FormWizard>
+      <CovidClaims />
     </div>
   );
 }

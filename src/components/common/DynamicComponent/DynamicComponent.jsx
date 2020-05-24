@@ -1,7 +1,7 @@
 import { createElement } from "react";
 import PropTypes from "prop-types";
-import UserForm from "../../claims/UserForm";
-import ClaimForm from "../../claims/ClaimForm";
+import UserForm from "../../claimForms/UserForm";
+import ClaimForm from "../../claimForms/ClaimForm";
 
 const components = {
   UserForm,

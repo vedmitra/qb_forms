@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "run-p start:dev start:api",
-    "start:dev": "webpack-dev-server --mode development",
+    "start:dev": "webpack-dev-server --mode development --hot --inline",
     "prestart:api": "node tools/createMockDb.js",
     "start:api": "node tools/apiServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
