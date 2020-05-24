@@ -1,5 +1,18 @@
 const path = require("path");
 const webpack = require("webpack");
+const fs = require("fs");
+
+const themePath = path.resolve(
+  __dirname,
+  `./src/themes/${process.env.THEME_NAME}.js`
+);
+const settingsBase = path.resolve(__dirname, `./src/settings`);
+let settingsPath = path.resolve(
+  __dirname,
+  `${settingsBase}/settings.${process.env.HOST_LOCATION || "prod"}.js`
+);
+console.log(settingsBase);
+console.log(settingsPath);
 
 module.exports = {
   entry: "./src/index.js",
@@ -18,7 +31,13 @@ module.exports = {
       },
     ],
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
+    alias: {
+      theme$: themePath,
+      settings$: settingsPath,
+    },
+  },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",

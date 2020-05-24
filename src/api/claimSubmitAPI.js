@@ -1,5 +1,6 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/claims/";
+import { settings } from "settings";
+const baseUrl = settings.apiUrl + "/claims/";
 
 export function getClaims() {
   return fetch(baseUrl).then(handleResponse).catch(handleError);
