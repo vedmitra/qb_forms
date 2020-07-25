@@ -37,6 +37,6 @@
     "start:api": "node tools/apiServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Veda Mitra",
+  "author": "Veda Mitra G",
   "license": "ISC"
 }
